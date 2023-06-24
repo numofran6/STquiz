@@ -1,9 +1,13 @@
 .header-container {
-	@apply max-w-[75rem] mx-auto min-h-[40vh] flex items-center justify-between;
+	@apply max-w-[75rem] mx-auto min-h-[40vh] flex 
+		items-center justify-between;
 }
 
 .blue-btn {
-	@apply bg-white text-blue-600 text-xl p-5 rounded-2xl flex items-center font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out;
+	@apply bg-[#FCFCFC] text-blue-600 text-xl p-5 
+		rounded-2xl flex items-center font-semibold 
+		hover:bg-blue-600 hover:text-white transition-all 
+		duration-300 ease-out;
 }
 
 .featured-container {
