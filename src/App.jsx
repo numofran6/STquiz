@@ -1,7 +1,14 @@
 import React from 'react';
+import { Home } from './views';
+import { NavBar } from './shared/components';
 
 function App() {
-	return <div>App</div>;
+	return (
+		<>
+			<NavBar />
+			<Home />
+		</>
+	);
 }
 
 export default App;

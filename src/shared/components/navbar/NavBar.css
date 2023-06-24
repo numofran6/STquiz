@@ -1,0 +1,23 @@
+.nav-link {
+	@apply p-3 rounded-md hover:text-[#D94E02] 
+    transition-all duration-300 ease-out font-bold;
+}
+
+.navbar-container {
+	@apply flex items-center justify-between 
+    max-w-[75rem] mx-auto pt-3;
+}
+
+.nav-title {
+	@apply text-3xl font-bold text-[#D94E02];
+}
+
+.search-input {
+	@apply pl-[3.2rem] p-4 outline-none 
+    rounded-xl bg-[#f7f8fb] focus:outline-none
+    placeholder:font-medium placeholder:text-[#A4A9C3];
+}
+
+.input-icon {
+	@apply w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-4 text-[#D94E02];
+}

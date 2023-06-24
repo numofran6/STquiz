@@ -1,0 +1,24 @@
+.header-container {
+	@apply max-w-[75rem] mx-auto min-h-[40vh] flex items-center justify-between;
+}
+
+.blue-btn {
+	@apply bg-white text-blue-600 text-xl p-5 rounded-2xl flex items-center font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out;
+}
+
+.featured-container {
+	@apply w-[24rem] rounded-[2.5rem] 
+		h-[33rem] bg-[#f7f8fb] bg-cover 
+		relative cursor-pointer hover:opacity-80 
+		transition-all ease-in-out duration-500;
+}
+
+.featured-info {
+	@apply absolute bottom-0 rounded-b-[2.5rem] 
+		space-y-3 pl-5 pt-5 pb-10 text-white 
+		bg-black bg-opacity-10;
+}
+
+.header-image {
+	background-image: linear-gradient(#f2f4f5, white);
+}
