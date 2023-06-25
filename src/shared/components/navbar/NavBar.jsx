@@ -12,7 +12,7 @@ export const NavBar = () => {
 
 	return (
 		<div className="bg-[#f2f4f5]">
-			<div className="navbar-container">
+			<div className="navbar-container max-w-container">
 				<div className="flex space-x-3 items-center">
 					<img src={logo} alt="Hot Cake Logo" className="w-16 h-20" />
 					<h1 className="nav-title">HOT CAKE</h1>

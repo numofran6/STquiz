@@ -1,5 +1,5 @@
 .header-container {
-	@apply max-w-[75rem] mx-auto min-h-[40vh] flex 
+	@apply min-h-[40vh] flex 
 		items-center justify-between;
 }
 
@@ -13,7 +13,7 @@
 .featured-container {
 	@apply w-[24rem] rounded-[2.5rem] 
 		h-[33rem] bg-[#f7f8fb] bg-cover 
-		relative cursor-pointer hover:opacity-80 
+		relative cursor-pointer hover:-translate-y-7 
 		transition-all ease-in-out duration-500;
 }
 

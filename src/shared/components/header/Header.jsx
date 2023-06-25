@@ -6,7 +6,7 @@ import './Header.css';
 export const Header = () => {
 	return (
 		<div className="header-image">
-			<div className="header-container">
+			<div className="header-container max-w-container">
 				<div className="space-y-5">
 					<h1 className="text-5xl font-bold">The Blog</h1>
 					<h4 className="text-4xl font-semibold text-[#464C53]">
