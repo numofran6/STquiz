@@ -74,3 +74,27 @@ export const promoted = [
     date: 'November 9, 2021'
   },
 ]
+
+export const createdPosts = [
+  {
+    img: spicesI,
+    title: 'How to Create Eye-Catching Email with Sendlane,s Email Builder',
+    description: 'How to Cook Spaghetti SquashI get so many questions about how to cook spaghetti squash, so I thought I’d share my go-to method for roasting it, a f ...',
+    author: 'Lura Blaim',
+    date: 'November 9, 2021'
+  },
+  {
+    img: spicesII,
+    title: 'To my mind, the life of a lamb is no less precious than that of…',
+    description: 'kvetching W. zaps Iraq Cozy sphinxwaves quart jug of bad milk.A very bad quack might jinx zippy fowls. Few quips galvanized the mock jury box. Quic avec toic vynmzi ...',
+    author: 'Lura Blaim',
+    date: 'November 9, 2021'
+  },
+  {
+    img: spicesIII,
+    title: 'As long as people will shed the blood of innocent creatures there… ',
+    description: 'How to Cook Spaghetti SquashI get so many questions about how to cook spaghetti squash, so I thought I’d share my go-to method for roasting it, a f ...',
+    author: 'Lura Blaim',
+    date: 'November 9, 2021'
+  },
+]

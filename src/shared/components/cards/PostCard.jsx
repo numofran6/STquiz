@@ -1,4 +1,5 @@
 import { useContainerHover } from '../../custom-hooks';
+import './PostCard.css';
 
 export const PostCard = ({ image, title, description, author, date }) => {
 	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
@@ -15,7 +16,7 @@ export const PostCard = ({ image, title, description, author, date }) => {
 					src={image}
 					ref={imageRef}
 					alt=""
-					className={`h-[25rem] object-cover rounded-[3rem] bg-[#f7f8fb] cursor-pointer ${
+					className={`postcard-img ${
 						isHovered ? 'shadow-2xl' : ''
 					} hover-transition`}
 				/>

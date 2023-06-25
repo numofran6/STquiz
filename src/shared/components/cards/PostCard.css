@@ -1,0 +1,13 @@
+.config-btns-container {
+	@apply flex items-center space-x-2 
+    absolute top-5 left-10;
+}
+
+.config-btns {
+	@apply bg-black bg-opacity-50 text-white p-3 flex items-center space-x-1;
+}
+
+.postcard-img {
+	@apply h-[25rem] object-cover rounded-[3rem] 
+    bg-[#f7f8fb] cursor-pointer;
+}

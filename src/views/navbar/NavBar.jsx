@@ -22,11 +22,19 @@ export const NavBar = () => {
 					<NavLink to={'/'} style={navLinkStyle} className="nav-link">
 						Home
 					</NavLink>
-					<NavLink to={'/add-story'} className="nav-link">
-						Add Story
+					<NavLink
+						to={'/create-post'}
+						style={navLinkStyle}
+						className="nav-link"
+					>
+						Create Post
 					</NavLink>
-					<NavLink to={'/my-stories'} className="nav-link">
-						My Stories
+					<NavLink
+						to={'/manage-posts'}
+						style={navLinkStyle}
+						className="nav-link"
+					>
+						My Posts
 					</NavLink>
 				</div>
 

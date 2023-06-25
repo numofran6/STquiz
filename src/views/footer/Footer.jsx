@@ -23,14 +23,14 @@ export const Footer = () => {
 						<h1 className="footer-title">Hot Cake</h1>
 
 						<div className="footer-menu">
-							<Link to={''} className="footer-link">
+							<Link to={'/'} className="footer-link">
 								Home
 							</Link>
-							<Link to={''} className="footer-link">
-								Add Story
+							<Link to={'/create-post'} className="footer-link">
+								Add Post
 							</Link>
-							<Link to={''} className="footer-link">
-								My Stories
+							<Link to={'/manage-posts'} className="footer-link">
+								My Posts
 							</Link>
 							<Link to={''} className="footer-link">
 								Contact
