@@ -12,5 +12,6 @@ import layer from '../../assets/images/layer.png'
 import spicesI from '../../assets/images/spicesI.jpg'
 import spicesII from '../../assets/images/spicesII.jpg'
 import spicesIII from '../../assets/images/spicesIII.jpg'
+import thumbnail from '../../assets/images/thumbnail.png'
 
-export { logo, featureI, featureII, featureIII, featureIV, oceangate, recentI, recentII, recentIII, recentIV, layer, spicesI, spicesII, spicesIII }
+export { logo, featureI, featureII, featureIII, featureIV, oceangate, recentI, recentII, recentIII, recentIV, layer, spicesI, spicesII, spicesIII, thumbnail }
