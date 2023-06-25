@@ -1,20 +1,27 @@
-import { featureI } from '../../constants/assets';
+import { useContainerHover } from '../../custom-hooks';
 
-export const SidePanel = () => {
+export const SidePanel = ({ title, description, image }) => {
+	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
+		useContainerHover();
+
 	return (
-		<div className="flex items-center space-x-6">
+		<div
+			onMouseOver={handleMouseOver}
+			onMouseOut={handleMouseOut}
+			className="flex items-center space-x-6  hover:cursor-pointer"
+		>
 			<img
-				src={featureI}
+				src={image}
+				ref={imageRef}
 				alt=""
-				className="w-[11.5rem] h-[9.5rem] object-cover rounded-[2rem] bg-[#f7f8fb]"
+				className={`w-[11.5rem] h-[9.5rem] object-cover rounded-[2rem] bg-[#f7f8fb] ${
+					isHovered ? 'shadow-2xl' : ''
+				} hover-transition`}
 			/>
 
 			<div className="space-y-5">
-				<h1 className="text-[#FF5A5A] text-[1.35rem] font-bold">Recipes</h1>
-				<h4 className="font-semibold">
-					For as long as men massacre animals, they will kill each other.
-					Indeed.
-				</h4>
+				<h1 className="text-[#FF5A5A] text-[1.35rem] font-bold">{title}</h1>
+				<h4 className="font-semibold">{description}</h4>
 			</div>
 		</div>
 	);

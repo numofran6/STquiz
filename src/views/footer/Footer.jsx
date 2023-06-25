@@ -1,5 +1,4 @@
-import React from 'react';
-import { logo } from '../../constants/assets';
+import { logo } from '../../shared/constants/assets';
 import { Link } from 'react-router-dom';
 import { LuMailOpen } from 'react-icons/lu';
 import { BsPhone } from 'react-icons/bs';

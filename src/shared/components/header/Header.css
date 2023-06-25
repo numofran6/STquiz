@@ -11,7 +11,7 @@
 }
 
 .featured-container {
-	@apply w-[24rem] rounded-[2.5rem] 
+	@apply w-[22rem] rounded-[2.5rem] 
 		h-[33rem] bg-[#f7f8fb] bg-cover 
 		relative cursor-pointer hover:-translate-y-7 
 		transition-all ease-in-out duration-500;

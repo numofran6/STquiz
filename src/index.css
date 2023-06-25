@@ -38,3 +38,12 @@ body {
 	bg-gradient-to-r from-[#00ffcc] to-[#24DBB7]
 	mb-32 space-y-12;
 }
+
+.promoted-card {
+	@apply min-h-[25rem] flex items-center 
+		rounded-3xl bg-[#f7f8fb] px-32;
+}
+
+.hover-transition {
+	@apply transition-all duration-500 ease-in-out;
+}

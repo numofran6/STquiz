@@ -1,4 +1,16 @@
 import logo from '../../assets/images/logo.png'
-import featureI from '../../assets/images/oceangate.jpg'
+import oceangate from '../../assets/images/oceangate.jpg'
+import featureI from '../../assets/images/featuredI.jpg'
+import featureII from '../../assets/images/featuredII.jpg'
+import featureIII from '../../assets/images/featuredIII.jpg'
+import featureIV from '../../assets/images/featuredIV.jpg'
+import recentI from '../../assets/images/recentI.jpg'
+import recentII from '../../assets/images/recentII.jpg'
+import recentIII from '../../assets/images/recentIII.jpg'
+import recentIV from '../../assets/images/recentIV.jpg'
+import layer from '../../assets/images/layer.png'
+import spicesI from '../../assets/images/spicesI.jpg'
+import spicesII from '../../assets/images/spicesII.jpg'
+import spicesIII from '../../assets/images/spicesIII.jpg'
 
-export { logo, featureI }
+export { logo, featureI, featureII, featureIII, featureIV, oceangate, recentI, recentII, recentIII, recentIV, layer, spicesI, spicesII, spicesIII }

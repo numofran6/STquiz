@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Header, Highlight, SidePanel } from '../../shared/components';
-import { featureI } from '../../shared/constants/assets';
+import {
+	Header,
+	Highlight,
+	PostCard,
+	SidePanel,
+} from '../../shared/components';
+import { layer } from '../../shared/constants/assets';
 import { MdEmail } from 'react-icons/md';
+import { promoted, recentItems } from '../../shared/utils/data';
 
 export const Home = () => {
 	return (
@@ -9,30 +15,52 @@ export const Home = () => {
 			<Header />
 
 			<section className="max-w-container">
-				<div className="min-h-[15rem] flex items-center">
+				<div className="mt-32 mb-20 flex items-center">
 					<h1 className="text-5xl font-medium">Most Recent</h1>
 				</div>
 
-				<div className="flex items-start space-x-10">
-					<div>
-						<Highlight />
-					</div>
+				<div className="grid grid-cols-3 gap-10">
+					{recentItems.slice(0, 1).map((item) => (
+						<div className="col-span-2" key={item.title}>
+							<Highlight
+								title={item.title}
+								description={item.description}
+								img={item.img}
+							/>
+						</div>
+					))}
 
-					<div>
-						<SidePanel />
+					<div className="flex flex-col space-y-5">
+						{recentItems.slice(1).map((item, index) => (
+							<div key={index}>
+								<SidePanel
+									title={item.title}
+									image={item.img}
+									description={item.description}
+								/>
+							</div>
+						))}
 					</div>
 				</div>
 
-				<div className="min-h-[25rem] flex items-center rounded-3xl bg-[#f7f8fb] my-40 px-32">
-					<div className="max-w-sm space-y-10">
-						<h1 className="text-4xl font-bold">
-							How to Create Eye-Catching Email with Sendlane, S Email Builder
-						</h1>
+				<div className="relative py-20 my-36">
+					<div className="promoted-card">
+						<div className="max-w-sm space-y-10">
+							<h1 className="text-4xl font-bold">
+								How to Create Eye-Catching Email with Sendlane, S Email Builder
+							</h1>
 
-						<Link to={'/read-more'} className="orange-btn w-fit">
-							Read More
-						</Link>
+							<Link to={'/read-more'} className="orange-btn w-fit">
+								Read More
+							</Link>
+						</div>
 					</div>
+
+					<img
+						src={layer}
+						alt=""
+						className="align-float-vertical w-[37rem] right-5"
+					/>
 				</div>
 			</section>
 
@@ -41,31 +69,18 @@ export const Home = () => {
 					<h1 className="text-5xl font-medium">Winter Recipes</h1>
 				</div>
 
-				<div className="grid grid-cols-3 gap-3">
-					<div className="space-y-8">
-						<img
-							src={featureI}
-							alt=""
-							className="h-[25rem] object-cover rounded-[3rem] bg-[#f7f8fb]"
-						/>
-
-						<div className="space-y-5">
-							<h1 className="text-2xl font-bold">
-								How to Create Eye-Catching Email with Sendlane,s Email Builder{' '}
-							</h1>
-
-							<h2 className="text-sm">
-								How to Cook Spaghetti SquashI get so many questions about how to
-								cook spaghetti squash, so I thought I’d share my go-to method
-								for roasting it, a f ...
-							</h2>
-
-							<div className="text-xs">
-								<h4 className="font-bold">Lura Blaim</h4>
-								<h4>November 9, 2021</h4>
-							</div>
+				<div className="grid grid-cols-3 gap-10">
+					{promoted.map((item, index) => (
+						<div key={index}>
+							<PostCard
+								image={item.img}
+								title={item.title}
+								description={item.description}
+								date={item.date}
+								author={item.author}
+							/>
 						</div>
-					</div>
+					))}
 				</div>
 			</section>
 

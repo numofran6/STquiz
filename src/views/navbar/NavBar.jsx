@@ -1,4 +1,4 @@
-import { logo } from '../../constants/assets';
+import { logo } from '../../shared/constants/assets';
 import { NavLink } from 'react-router-dom';
 import { VscSearch } from 'react-icons/vsc';
 import './NavBar.css';

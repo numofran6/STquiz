@@ -1,6 +1,5 @@
 import React from 'react';
-import { Home } from './views';
-import { Footer, NavBar } from './shared/components';
+import { Footer, Home, NavBar } from './views';
 
 function App() {
 	return (
