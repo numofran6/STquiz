@@ -1,16 +1,20 @@
-import React from 'react';
-import { createdPosts } from '../../shared/utils/data';
+import { useContext } from 'react';
 import { AdvancedPostCard } from '../../shared/components';
 import { Link } from 'react-router-dom';
 import './ManagePosts.css';
+import { Post } from '../../shared/context/PostContext';
 
 export const ManagePosts = () => {
-	if (createdPosts.length < 1) {
+	const {
+		states: { posts },
+	} = useContext(Post);
+
+	if (posts.length < 1) {
 		return (
 			<>
 				<div className="no-created-post-container landing-background">
 					<h1 className="text-xl">You haven't created any posts yet</h1>
-					<Link to={'/create-post'} className="blue-btn">
+					<Link to={'/create-post'} className="blue-btn-inverse">
 						Add Post
 					</Link>
 				</div>
@@ -37,7 +41,7 @@ export const ManagePosts = () => {
 				</div>
 
 				<div className="manageposts-posts-section">
-					{createdPosts.map((item, index) => (
+					{posts.map((item, index) => (
 						<div key={index}>
 							<AdvancedPostCard
 								image={item.img}
