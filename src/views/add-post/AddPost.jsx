@@ -109,6 +109,7 @@ export const AddPost = () => {
 										ref={inputFileRef}
 										onChange={handleInputFileChange}
 										type="file"
+										accept="image/*"
 										className="hidden"
 									/>
 								</div>

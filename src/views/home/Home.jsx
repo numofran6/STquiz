@@ -7,8 +7,8 @@ import {
 import { layer } from '../../shared/constants/assets';
 import { MdEmail } from 'react-icons/md';
 import { recipes, recentItems, promotedItem } from '../../shared/utils/data';
-import './Home.css';
 import { useInAppNavigation } from '../../shared/custom-hooks';
+import './Home.css';
 
 export const Home = () => {
 	const { handlePostView } = useInAppNavigation();

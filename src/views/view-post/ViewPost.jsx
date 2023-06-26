@@ -6,7 +6,7 @@ export const ViewPost = () => {
 
 	return (
 		<main className="landing-background pt-16 pb-40">
-			<div className="max-w-4xl mx-auto px-7 xl:px-0">
+			<div className="max-w-4xl mx-auto px-7 xl:px-0 overflow-hidden">
 				<div className="flex flex-col space-y-20 mb-10">
 					<div>
 						<img

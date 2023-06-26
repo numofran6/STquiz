@@ -4,8 +4,8 @@
 }
 
 .manageposts-posts-section {
-	@apply space-y-16 xl:space-y-0 xl:grid xl:grid-cols-3 
-    xl:gap-10 md:max-w-xl xl:max-w-none mx-auto;
+	@apply space-y-16 lg:space-y-0 lg:grid lg:grid-cols-3 
+    lg:gap-5 xl:gap-10 md:max-w-xl lg:max-w-none mx-auto;
 }
 
 .no-created-post-container {

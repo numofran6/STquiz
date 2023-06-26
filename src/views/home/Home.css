@@ -1,9 +1,11 @@
 .most-recent-section {
-	@apply space-y-10 xl:space-y-0 xl:grid xl:grid-cols-3 xl:gap-10 md:max-w-xl xl:max-w-none;
+	@apply space-y-10 xl:space-y-0 xl:grid xl:grid-cols-3 
+		xl:gap-10 md:max-w-xl xl:max-w-none;
 }
 
 .recipes-section {
-	@apply space-y-16 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-5 xl:gap-10 md:max-w-xl lg:max-w-none mx-auto;
+	@apply space-y-16 lg:space-y-0 lg:grid lg:grid-cols-3 
+		lg:gap-5 xl:gap-10 md:max-w-xl lg:max-w-none mx-auto;
 }
 
 .promoted-container {
