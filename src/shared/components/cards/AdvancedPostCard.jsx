@@ -1,6 +1,8 @@
 import { useContainerHover } from '../../custom-hooks';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { MdDeleteOutline } from 'react-icons/md';
+import { useContext } from 'react';
+import { PostContext } from '../../context/PostContext';
 import './PostCard.css';
 
 export const AdvancedPostCard = ({
@@ -10,22 +12,28 @@ export const AdvancedPostCard = ({
 	author,
 	date,
 	onClick = () => {},
+	item,
 }) => {
 	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
 		useContainerHover();
+	const { dispatch } = useContext(PostContext);
+
+	const handleDelete = (item) => {
+		dispatch({ type: 'REMOVE_POST', payload: item });
+	};
 
 	return (
 		<>
 			<div
 				onMouseOver={handleMouseOver}
 				onMouseOut={handleMouseOut}
-				onClick={onClick}
 				className="space-y-8"
 			>
 				<div className="relative max-w-full">
 					<img
 						src={image}
 						ref={imageRef}
+						onClick={onClick}
 						alt=""
 						className={`postcard-img ${
 							isHovered ? 'shadow-2xl' : ''
@@ -37,13 +45,13 @@ export const AdvancedPostCard = ({
 							<AiOutlineEdit className="w-5 h-5" /> <span>Edit</span>
 						</button>
 
-						<button className="config-btns">
+						<button onClick={() => handleDelete(item)} className="config-btns">
 							<MdDeleteOutline className="w-5 h-5" /> <span>Delete</span>
 						</button>
 					</div>
 				</div>
 
-				<div className="space-y-5">
+				<div className="space-y-5" onClick={onClick}>
 					<h1 className="text-xl font-bold cursor-pointer">{title}</h1>
 
 					<h2 className="text-sm text-gray-500">{description}</h2>

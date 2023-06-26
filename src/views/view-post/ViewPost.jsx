@@ -20,7 +20,7 @@ export const ViewPost = () => {
 
 					<div className="text-xs">
 						<h6 className="font-bold">{post.author} </h6>
-						<h6>{post.title} </h6>
+						<h6>{post.date} </h6>
 					</div>
 				</div>
 

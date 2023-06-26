@@ -1,13 +1,15 @@
 import { useContext } from 'react';
 import { AdvancedPostCard } from '../../shared/components';
 import { Link } from 'react-router-dom';
+import { PostContext } from '../../shared/context/PostContext';
+import { useInAppNavigation } from '../../shared/custom-hooks';
 import './ManagePosts.css';
-import { Post } from '../../shared/context/PostContext';
 
 export const ManagePosts = () => {
 	const {
 		states: { posts },
-	} = useContext(Post);
+	} = useContext(PostContext);
+	const { handlePostView } = useInAppNavigation();
 
 	if (posts.length < 1) {
 		return (
@@ -46,9 +48,11 @@ export const ManagePosts = () => {
 							<AdvancedPostCard
 								image={item.img}
 								title={item.title}
-								description={item.description}
+								description={`${item.body.slice(0, 200)}...`}
 								date={item.date}
 								author={item.author}
+								onClick={() => handlePostView(item)}
+								item={item}
 							/>
 						</div>
 					))}
