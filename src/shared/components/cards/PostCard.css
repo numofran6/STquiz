@@ -8,6 +8,6 @@
 }
 
 .postcard-img {
-	@apply h-[25rem] object-cover rounded-[3rem] 
+	@apply h-[22rem] md:h-[25rem] object-cover rounded-[3rem] 
     bg-[#f7f8fb] cursor-pointer;
 }

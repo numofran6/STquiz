@@ -1,0 +1,39 @@
+.most-recent-section {
+	@apply space-y-10 xl:space-y-0 xl:grid xl:grid-cols-3 xl:gap-10 md:max-w-xl xl:max-w-none;
+}
+
+.recipes-section {
+	@apply space-y-16 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-5 xl:gap-10 md:max-w-xl lg:max-w-none mx-auto;
+}
+
+.promoted-container {
+	@apply relative py-20 my-20 lg:my-36 lg:max-w-4xl xl:max-w-none;
+}
+
+.promoted-image {
+	@apply w-[30rem] lg:w-[37rem] pt-48 md:pt-0 md:right-5;
+}
+
+.promoted-card {
+	@apply min-h-[25rem] lg:flex lg:items-center 
+		rounded-3xl bg-[#f7f8fb] px-5 pt-8 lg:pt-0 lg:px-32;
+}
+
+.subscribe-btn {
+	@apply text-xs md:absolute md:top-1/2 md:transform 
+		md:-translate-y-1/2 md:right-5 bg-[#f7f8fb] 
+		p-3 rounded-lg font-semibold hover:text-[#FF5A5A] 
+		active:text-black transition-all duration-300 ease-in-out;
+}
+
+.subscribe-input {
+	@apply w-[15rem] md:w-[24rem] p-5 pl-16 pr-32 bg-white rounded-3xl 
+	outline-none focus:outline-none;
+}
+
+.subscribe-container {
+	@apply min-h-[30rem] flex flex-col items-center 
+	justify-center text-center rounded-3xl 
+	bg-gradient-to-r from-[#00ffcc] to-[#24DBB7]
+	mb-32 space-y-12 px-3 lg:max-w-4xl xl:max-w-none;
+}

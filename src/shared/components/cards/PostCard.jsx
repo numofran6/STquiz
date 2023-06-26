@@ -22,7 +22,9 @@ export const PostCard = ({ image, title, description, author, date }) => {
 				/>
 
 				<div className="space-y-5">
-					<h1 className="text-xl font-bold cursor-pointer">{title}</h1>
+					<h1 className="text-lg md:text-xl font-bold cursor-pointer">
+						{title}
+					</h1>
 
 					<h2 className="text-sm text-gray-500">{description}</h2>
 

@@ -2,12 +2,13 @@ import React from 'react';
 import { createdPosts } from '../../shared/utils/data';
 import { AdvancedPostCard } from '../../shared/components';
 import { Link } from 'react-router-dom';
+import './ManagePosts.css';
 
 export const ManagePosts = () => {
 	if (createdPosts.length < 1) {
 		return (
 			<>
-				<div className="h-[40rem] flex flex-col items-center justify-center landing-background space-y-2">
+				<div className="no-created-post-container landing-background">
 					<h1 className="text-xl">You haven't created any posts yet</h1>
 					<Link to={'/create-post'} className="blue-btn">
 						Add Post
@@ -20,7 +21,7 @@ export const ManagePosts = () => {
 	return (
 		<main className="landing-background pb-40">
 			<div className="max-w-container">
-				<div className="flex items-center justify-between py-16">
+				<div className="manageposts-heading">
 					<div>
 						<h1 className="uppercase font-light">Wrote by you</h1>
 						<p className="text-xl font-bold">
@@ -29,11 +30,13 @@ export const ManagePosts = () => {
 					</div>
 
 					<div>
-						<Link className="blue-btn">Add more posts</Link>
+						<Link to={'/create-post'} className="blue-btn w-fit">
+							Add more posts
+						</Link>
 					</div>
 				</div>
 
-				<div className="grid grid-cols-3 gap-10">
+				<div className="manageposts-posts-section">
 					{createdPosts.map((item, index) => (
 						<div key={index}>
 							<AdvancedPostCard

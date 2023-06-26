@@ -28,34 +28,11 @@ body {
 }
 
 .max-w-container {
-	@apply max-w-[75rem] mx-auto;
+	@apply max-w-[75rem] mx-auto px-7 xl:px-0;
 }
 
 .align-float-vertical {
 	@apply absolute top-1/2 transform -translate-y-1/2;
-}
-
-.subscribe-btn {
-	@apply text-xs align-float-vertical right-5 bg-[#f7f8fb] 
-		p-3 rounded-lg font-semibold hover:text-[#FF5A5A] 
-		active:text-black transition-all duration-300 ease-in-out;
-}
-
-.subscribe-input {
-	@apply w-[24rem] p-5 pl-16 pr-32 bg-white rounded-3xl 
-	outline-none focus:outline-none;
-}
-
-.subscribe-container {
-	@apply min-h-[30rem] flex flex-col items-center 
-	justify-center text-center rounded-3xl 
-	bg-gradient-to-r from-[#00ffcc] to-[#24DBB7]
-	mb-32 space-y-12;
-}
-
-.promoted-card {
-	@apply min-h-[25rem] flex items-center 
-		rounded-3xl bg-[#f7f8fb] px-32;
 }
 
 .hover-transition {
@@ -64,4 +41,8 @@ body {
 
 .landing-background {
 	@apply bg-gradient-to-b from-[#f2f4f5] to-white;
+}
+
+.section-title {
+	@apply text-4xl md:text-5xl font-semibold md:font-medium;
 }

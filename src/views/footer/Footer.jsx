@@ -2,15 +2,21 @@ import { logo } from '../../shared/constants/assets';
 import { Link } from 'react-router-dom';
 import { LuMailOpen } from 'react-icons/lu';
 import { BsPhone } from 'react-icons/bs';
+import { useInAppNavigation } from '../../shared/custom-hooks';
 import './Footer.css';
 
 export const Footer = () => {
+	const { gotoHome } = useInAppNavigation();
+
 	return (
 		<>
 			<div className="max-w-container mb-28">
-				<div className="grid grid-cols-5 gap-5">
+				<div className="footer-container">
 					<div className="space-y-10 col-span-2">
-						<div className="flex space-x-3 items-center">
+						<div
+							onClick={gotoHome}
+							className="cursor-pointer flex space-x-3 items-center"
+						>
 							<img src={logo} alt="Hot Cake Logo" className="w-16 h-20" />
 							<h1 className="nav-title">HOT CAKE</h1>
 						</div>

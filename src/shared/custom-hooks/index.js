@@ -1,3 +1,4 @@
 import { useContainerHover } from "./useContainerHover";
+import { useInAppNavigation } from "./useInAppNavigation";
 
-export { useContainerHover }
+export { useContainerHover, useInAppNavigation }

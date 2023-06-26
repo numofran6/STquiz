@@ -1,0 +1,14 @@
+.manageposts-heading {
+	@apply flex flex-col md:flex-row md:items-center 
+    md:justify-between py-16 space-y-5 md:space-y-0;
+}
+
+.manageposts-posts-section {
+	@apply space-y-16 xl:space-y-0 xl:grid xl:grid-cols-3 
+    xl:gap-10 md:max-w-xl xl:max-w-none mx-auto;
+}
+
+.no-created-post-container {
+	@apply h-[40rem] flex flex-col items-center text-center 
+    px-7 justify-center space-y-2;
+}
