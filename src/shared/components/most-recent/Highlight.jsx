@@ -1,6 +1,6 @@
 import { useContainerHover } from '../../custom-hooks';
 
-export const Highlight = ({ img, title, description }) => {
+export const Highlight = ({ img, title, description, onClick = () => {} }) => {
 	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
 		useContainerHover();
 
@@ -9,6 +9,7 @@ export const Highlight = ({ img, title, description }) => {
 			onMouseOver={handleMouseOver}
 			onMouseOut={handleMouseOut}
 			className="flex flex-col space-y-10 hover:cursor-pointer"
+			onClick={onClick}
 		>
 			<img
 				src={img}

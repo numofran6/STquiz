@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
 	Header,
 	Highlight,
@@ -7,10 +6,12 @@ import {
 } from '../../shared/components';
 import { layer } from '../../shared/constants/assets';
 import { MdEmail } from 'react-icons/md';
-import { promoted, recentItems } from '../../shared/utils/data';
+import { recipes, recentItems, promotedItem } from '../../shared/utils/data';
 import './Home.css';
+import { useInAppNavigation } from '../../shared/custom-hooks';
 
 export const Home = () => {
+	const { handlePostView } = useInAppNavigation();
 	return (
 		<>
 			<header>
@@ -25,11 +26,12 @@ export const Home = () => {
 
 					<div className="most-recent-section">
 						{recentItems.slice(0, 1).map((item) => (
-							<div className="col-span-2" key={item.title}>
+							<div key={item.title} className="col-span-2">
 								<Highlight
 									title={item.title}
 									description={item.description}
 									img={item.img}
+									onClick={() => handlePostView(item)}
 								/>
 							</div>
 						))}
@@ -41,6 +43,7 @@ export const Home = () => {
 										title={item.title}
 										image={item.img}
 										description={item.description}
+										onClick={() => handlePostView(item)}
 									/>
 								</div>
 							))}
@@ -55,9 +58,12 @@ export const Home = () => {
 									Builder
 								</h1>
 
-								<Link to={'/read-more'} className="orange-btn w-fit">
+								<button
+									onClick={() => handlePostView(promotedItem)}
+									className="orange-btn w-fit"
+								>
 									Read More
-								</Link>
+								</button>
 							</div>
 						</div>
 
@@ -75,7 +81,7 @@ export const Home = () => {
 					</div>
 
 					<div className="recipes-section">
-						{promoted.map((item, index) => (
+						{recipes.map((item, index) => (
 							<div key={index}>
 								<PostCard
 									image={item.img}
@@ -83,6 +89,7 @@ export const Home = () => {
 									description={item.description}
 									date={item.date}
 									author={item.author}
+									onClick={() => handlePostView(item)}
 								/>
 							</div>
 						))}

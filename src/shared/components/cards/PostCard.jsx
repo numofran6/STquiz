@@ -1,7 +1,14 @@
 import { useContainerHover } from '../../custom-hooks';
 import './PostCard.css';
 
-export const PostCard = ({ image, title, description, author, date }) => {
+export const PostCard = ({
+	image,
+	title,
+	description,
+	author,
+	date,
+	onClick = () => {},
+}) => {
 	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
 		useContainerHover();
 
@@ -10,6 +17,7 @@ export const PostCard = ({ image, title, description, author, date }) => {
 			<div
 				onMouseOver={handleMouseOver}
 				onMouseOut={handleMouseOut}
+				onClick={onClick}
 				className="space-y-8"
 			>
 				<img

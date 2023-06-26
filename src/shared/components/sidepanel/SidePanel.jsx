@@ -1,6 +1,11 @@
 import { useContainerHover } from '../../custom-hooks';
 
-export const SidePanel = ({ title, description, image }) => {
+export const SidePanel = ({
+	title,
+	description,
+	image,
+	onClick = () => {},
+}) => {
 	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
 		useContainerHover();
 
@@ -8,6 +13,7 @@ export const SidePanel = ({ title, description, image }) => {
 		<div
 			onMouseOver={handleMouseOver}
 			onMouseOut={handleMouseOut}
+			onClick={onClick}
 			className="flex items-center space-x-4 md:space-x-6 hover:cursor-pointer"
 		>
 			<img

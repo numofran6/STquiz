@@ -9,6 +9,7 @@ export const AdvancedPostCard = ({
 	description,
 	author,
 	date,
+	onClick = () => {},
 }) => {
 	const { imageRef, handleMouseOut, handleMouseOver, isHovered } =
 		useContainerHover();
@@ -18,29 +19,28 @@ export const AdvancedPostCard = ({
 			<div
 				onMouseOver={handleMouseOver}
 				onMouseOut={handleMouseOut}
+				onClick={onClick}
 				className="space-y-8"
 			>
-				<div className="relative">
+				<div className="relative max-w-full">
 					<img
 						src={image}
 						ref={imageRef}
 						alt=""
-						className={`postcard-img  ${
+						className={`postcard-img ${
 							isHovered ? 'shadow-2xl' : ''
 						} hover-transition`}
 					/>
 
-					{isHovered && (
-						<div className="hover-transition config-btns-container">
-							<button className="config-btns">
-								<AiOutlineEdit className="w-5 h-5" /> <span>Edit</span>
-							</button>
+					<div className="config-btns-container">
+						<button className="config-btns">
+							<AiOutlineEdit className="w-5 h-5" /> <span>Edit</span>
+						</button>
 
-							<button className="config-btns">
-								<MdDeleteOutline className="w-5 h-5" /> <span>Delete</span>
-							</button>
-						</div>
-					)}
+						<button className="config-btns">
+							<MdDeleteOutline className="w-5 h-5" /> <span>Delete</span>
+						</button>
+					</div>
 				</div>
 
 				<div className="space-y-5">

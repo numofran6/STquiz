@@ -30,7 +30,7 @@ export const ManagePosts = () => {
 					</div>
 
 					<div>
-						<Link to={'/create-post'} className="blue-btn w-fit">
+						<Link to={'/create-post'} className="blue-btn-inverse w-fit">
 							Add more posts
 						</Link>
 					</div>
