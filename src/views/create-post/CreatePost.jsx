@@ -22,7 +22,9 @@ export const CreatePost = () => {
 	const [author, setAuthor] = useState(post?.author || '');
 	const [date, setDate] = useState(post?.date || '');
 	const [body, setBody] = useState(post?.body || '');
-	const [hasImageSelected, setHasImageSelected] = useState(false);
+	const [hasImageSelected, setHasImageSelected] = useState(
+		post?.title ? true : false
+	);
 	const [formError, setFormError] = useState({ date: false, image: false });
 
 	const { gotoManagePosts } = useInAppNavigation();
