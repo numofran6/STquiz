@@ -22,8 +22,8 @@ export const CreatePost = () => {
 	const [author, setAuthor] = useState(post?.author || '');
 	const [date, setDate] = useState(post?.date || '');
 	const [body, setBody] = useState(post?.body || '');
-	const [selectedImage, setSelectedImage] = useState(null);
-	const [formError, setFormError] = useState({ date: false });
+	const [hasImageSelected, setHasImageSelected] = useState(false);
+	const [formError, setFormError] = useState({ date: false, image: false });
 
 	const { gotoManagePosts } = useInAppNavigation();
 
@@ -41,25 +41,75 @@ export const CreatePost = () => {
 			const reader = new FileReader();
 
 			reader.onload = (e) => {
-				imageRef.current.src = e.target.result;
+				const image = new Image();
+				image.src = e.target.result;
 
-				const imageDataString = e.target.result.split(',')[1];
-				localStorage.setItem('imageData', imageDataString);
+				image.onload = () => {
+					const imageSizeInBytes = image.src.length;
+					const localStorageQuota = 1024 * 1024 - 1;
+
+					if (imageSizeInBytes <= localStorageQuota) {
+						imageRef.current.src = e.target.result;
+
+						const imageDataString = e.target.result.split(',')[1];
+						localStorage.setItem(`imageData_${title}`, imageDataString);
+						setFormError((prev) => ({ ...prev, image: false }));
+						setHasImageSelected(true);
+					} else {
+						setFormError((prev) => ({ ...prev, image: true }));
+					}
+				};
 			};
 
 			reader.readAsDataURL(file);
 		}
 	};
 
+	// const validateDate = () => {
+	// 	if (dateRegex.test(date)) {
+	// 		return true;
+	// 	} else {
+	// 		setFormError((prev) => ({ ...prev, date: true }));
+	// 		dateInputRef.current.scrollIntoView({
+	// 			behavior: 'smooth',
+	// 			block: 'center',
+	// 		});
+	// 		return false;
+	// 	}
+	// };
+	// const validateImage = () => {
+	// 	if (hasImageSelected) {
+	// 		return true;
+	// 	} else {
+	// 		setFormError((prev) => ({ ...prev, image: true }));
+	// 		imageRef.current.scrollIntoView({
+	// 			behavior: 'smooth',
+	// 			block: 'center',
+	// 		});
+	// 		return false;
+	// 	}
+	// };
+
 	const validateForm = () => {
-		if (dateRegex.test(date)) {
+		const isValidDate = dateRegex.test(date);
+
+		if (isValidDate && hasImageSelected && title && author && date && body) {
 			return true;
 		} else {
-			setFormError({ date: true });
-			dateInputRef.current.scrollIntoView({
-				behavior: 'smooth',
-				block: 'center',
-			});
+			if (!isValidDate) {
+				setFormError((prev) => ({ ...prev, date: true }));
+				dateInputRef.current.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center',
+				});
+			}
+			if (!hasImageSelected) {
+				setFormError((prev) => ({ ...prev, image: true }));
+				imageRef.current.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center',
+				});
+			}
 			return false;
 		}
 	};
@@ -67,10 +117,10 @@ export const CreatePost = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const imageData = localStorage.getItem('imageData');
+		const imageData = localStorage.getItem(`imageData_${title}`);
 		const imageDataURL = `data:image/png;base64,${imageData}`;
 
-		if (validateForm() && title && author && date && body && imageData) {
+		if (validateForm() && imageData) {
 			dispatch({
 				type: 'ADD_POST',
 				payload: { title, author, date, body, img: imageDataURL },
@@ -136,11 +186,18 @@ export const CreatePost = () => {
 										onClick={handleImageClick}
 										src={post?.img ? post.img : thumbnail}
 										alt=""
-										className="w-[30rem] object-cover h-[20rem] bg-gray-200 cursor-pointer rounded-md"
+										className="w-[30rem] object-cover h-[20rem] bg-gray-200 cursor-pointer rounded-md hover-transition"
+										style={{ border: formError.image && '2px solid red' }}
 									/>
 
 									<p className="mt-1 font-bold">Upload Image *</p>
-									<p className="text-red-600 font-bold">Image is required</p>
+									<p
+										className={`font-semibold text-sm text-gray-500 ${
+											formError.image && 'text-red-600 italic'
+										}`}
+									>
+										Image is required and must be less than 1MB
+									</p>
 								</div>
 
 								<div>
