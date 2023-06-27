@@ -21,7 +21,7 @@ export const useInAppNavigation = () => {
   };
 
   const handleEditPost = (item) => {
-    navigate('/create-post', { state: { item, path: location.pathname } });
+    navigate('/create-post', { state: { item, from: location.pathname } });
   }
 
   return { gotoHome, gotoCreatePost, gotoManagePosts, handlePostView, handleEditPost }

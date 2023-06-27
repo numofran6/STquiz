@@ -18,7 +18,7 @@ export const CreatePost = () => {
 
 	const location = useLocation();
 	const post = location.state?.item;
-	const prevRoute = location.state?.path;
+	const prevRoute = location.state?.from;
 
 	const savedDate = post?.date ? new Date(post.formattedDate) : null;
 
