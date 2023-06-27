@@ -12,8 +12,17 @@ const reducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD_POST': {
 			const newPost = action.payload;
-			localStorage.setItem('post', JSON.stringify([...state.posts, newPost]));
-			return { ...state, posts: [...state.posts, newPost] };
+			const existItem = state.posts.find(
+				(item) => item.title === newPost.title
+			);
+			const postItems = existItem
+				? state.posts.map((item) =>
+						item.title === existItem.title ? newPost : item
+				  )
+				: [...state.posts, newPost];
+
+			localStorage.setItem('post', JSON.stringify([...postItems]));
+			return { ...state, posts: [...postItems] };
 		}
 		case 'REMOVE_POST': {
 			const postToRemove = action.payload;
@@ -26,6 +35,22 @@ const reducer = (state, action) => {
 		// ... other cases
 	}
 };
+
+// case 'CART_ADD_ITEM': {
+// 	const newItem = action.payload;
+// 	const existItem = state.cart.cartItems.find(
+// 		(item) => item.slug === newItem.slug
+// 	);
+// 	const cartItems = existItem
+// 		? state.cart.cartItems.map((item) =>
+// 				item.name === existItem.name ? newItem : item
+// 		  )
+// 		: [...state.cart.cartItems, newItem];
+// 	Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }), {
+// 		sameSite: 'Lax',
+// 	});
+// 	return { ...state, cart: { ...state.cart, cartItems } };
+// }
 
 export const PostContextProvider = ({ children }) => {
 	const [states, dispatch] = useReducer(reducer, initialState);
