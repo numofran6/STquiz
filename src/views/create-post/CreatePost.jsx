@@ -5,12 +5,14 @@ import { useContext } from 'react';
 import { PostContext } from '../../shared/context/PostContext';
 import { useInAppNavigation } from '../../shared/custom-hooks';
 import { useLocation } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 import './CreatePost.css';
 
 export const CreatePost = () => {
 	const inputFileRef = useRef(null);
 	const imageRef = useRef(null);
-	const dateInputRef = useRef(null);
 
 	const { dispatch } = useContext(PostContext);
 
@@ -18,9 +20,11 @@ export const CreatePost = () => {
 	const post = location.state?.item;
 	const prevRoute = location.state?.path;
 
+	const savedDate = post?.date ? new Date(post.formattedDate) : null;
+
 	const [title, setTitle] = useState(post?.title || '');
 	const [author, setAuthor] = useState(post?.author || '');
-	const [date, setDate] = useState(post?.date || '');
+	const [date, setDate] = useState(savedDate || '');
 	const [body, setBody] = useState(post?.body || '');
 	const [hasImageSelected, setHasImageSelected] = useState(
 		post?.title ? true : false
@@ -28,9 +32,6 @@ export const CreatePost = () => {
 	const [formError, setFormError] = useState({ date: false, image: false });
 
 	const { gotoManagePosts } = useInAppNavigation();
-
-	const dateRegex =
-		/^(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2},\s\d{4}$/;
 
 	const handleImageClick = () => {
 		inputFileRef.current.click();
@@ -67,44 +68,10 @@ export const CreatePost = () => {
 		}
 	};
 
-	// const validateDate = () => {
-	// 	if (dateRegex.test(date)) {
-	// 		return true;
-	// 	} else {
-	// 		setFormError((prev) => ({ ...prev, date: true }));
-	// 		dateInputRef.current.scrollIntoView({
-	// 			behavior: 'smooth',
-	// 			block: 'center',
-	// 		});
-	// 		return false;
-	// 	}
-	// };
-	// const validateImage = () => {
-	// 	if (hasImageSelected) {
-	// 		return true;
-	// 	} else {
-	// 		setFormError((prev) => ({ ...prev, image: true }));
-	// 		imageRef.current.scrollIntoView({
-	// 			behavior: 'smooth',
-	// 			block: 'center',
-	// 		});
-	// 		return false;
-	// 	}
-	// };
-
 	const validateForm = () => {
-		const isValidDate = dateRegex.test(date);
-
-		if (isValidDate && hasImageSelected && title && author && date && body) {
+		if (hasImageSelected && title && author && date && body) {
 			return true;
 		} else {
-			if (!isValidDate) {
-				setFormError((prev) => ({ ...prev, date: true }));
-				dateInputRef.current.scrollIntoView({
-					behavior: 'smooth',
-					block: 'center',
-				});
-			}
 			if (!hasImageSelected) {
 				setFormError((prev) => ({ ...prev, image: true }));
 				imageRef.current.scrollIntoView({
@@ -119,13 +86,23 @@ export const CreatePost = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		const formattedDate = date ? date.toISOString() : '';
+		const dateToDisplay = formattedDate.slice(0, 10);
+
 		const imageData = localStorage.getItem(`imageData_${title}`);
 		const imageDataURL = `data:image/png;base64,${imageData}`;
 
 		if (validateForm() && imageData) {
 			dispatch({
 				type: 'ADD_POST',
-				payload: { title, author, date, body, img: imageDataURL },
+				payload: {
+					title,
+					author,
+					date: dateToDisplay,
+					body,
+					img: imageDataURL,
+					formattedDate,
+				},
 			});
 			gotoManagePosts();
 		}
@@ -159,20 +136,16 @@ export const CreatePost = () => {
 								}
 								disabled={prevRoute === '/manage-posts'}
 							/>
-							<TextField
+
+							<DatePicker
 								required
-								ref={dateInputRef}
-								label="Date (Ex: May 9, 2023)"
-								className="add-post-input"
-								value={date}
-								onChange={(e) => setDate(e.target.value)}
-								error={formError.date && !dateRegex.test(date)}
-								helperText={
-									formError.date &&
-									!dateRegex.test(date) &&
-									'Please use the correct Date format.'
-								}
+								selected={date}
+								onChange={(newDate) => setDate(newDate)}
+								dateFormat="MMMM d, yyyy"
+								placeholderText="Select a date *"
+								customInput={<TextField />}
 							/>
+
 							<TextField
 								required
 								label="Author"
