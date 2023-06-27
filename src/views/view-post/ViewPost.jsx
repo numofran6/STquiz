@@ -13,6 +13,7 @@ export const ViewPost = () => {
 							src={post.img}
 							alt=""
 							className="w-full h-[30rem] rounded-[3rem] object-cover"
+							id="viewpost"
 						/>
 					</div>
 

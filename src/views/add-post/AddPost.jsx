@@ -4,16 +4,19 @@ import { thumbnail } from '../../shared/constants/assets';
 import { useContext } from 'react';
 import { PostContext } from '../../shared/context/PostContext';
 import { useInAppNavigation } from '../../shared/custom-hooks';
+import { useLocation } from 'react-router-dom';
 import './AddPost.css';
 
 export const AddPost = () => {
 	const inputFileRef = useRef(null);
 	const imageRef = useRef(null);
 	const { dispatch } = useContext(PostContext);
-	const [title, setTitle] = useState('');
-	const [author, setAuthor] = useState('');
-	const [date, setDate] = useState('');
-	const [body, setBody] = useState('');
+	const location = useLocation();
+	const post = location.state?.item;
+	const [title, setTitle] = useState(post?.title || '');
+	const [author, setAuthor] = useState(post?.author || '');
+	const [date, setDate] = useState(post?.date || '');
+	const [body, setBody] = useState(post?.body || '');
 	const { gotoManagePosts } = useInAppNavigation();
 
 	const handleImageClick = () => {
@@ -95,7 +98,7 @@ export const AddPost = () => {
 									<img
 										ref={imageRef}
 										onClick={handleImageClick}
-										src={thumbnail}
+										src={post?.img ? post.img : thumbnail}
 										alt=""
 										className="w-[30rem] object-cover h-[20rem] bg-gray-200 cursor-pointer rounded-md"
 									/>

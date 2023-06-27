@@ -1,4 +1,4 @@
-import { useContainerHover } from '../../custom-hooks';
+import { useContainerHover, useInAppNavigation } from '../../custom-hooks';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { MdDeleteOutline } from 'react-icons/md';
 import { useContext, useState } from 'react';
@@ -19,6 +19,7 @@ export const AdvancedPostCard = ({
 		useContainerHover();
 	const { dispatch } = useContext(PostContext);
 	const [showDeletePanel, setShowDeletePanel] = useState(false);
+	const { handleEditPost } = useInAppNavigation();
 
 	const handleDelete = () => {
 		dispatch({ type: 'REMOVE_POST', payload: item });
@@ -44,7 +45,10 @@ export const AdvancedPostCard = ({
 					/>
 
 					<div className="config-btns-container">
-						<button className="config-btns">
+						<button
+							onClick={() => handleEditPost(item)}
+							className="config-btns"
+						>
 							<AiOutlineEdit className="w-5 h-5" /> <span>Edit</span>
 						</button>
 

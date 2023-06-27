@@ -17,8 +17,12 @@ export const useInAppNavigation = () => {
   }
 
   const handlePostView = (item) => {
-    navigate('/view-post', { state: { item } });
+    navigate('/view-post/#viewpost', { state: { item } });
   };
 
-  return { gotoHome, gotoCreatePost, gotoManagePosts, handlePostView }
+  const handleEditPost = (item) => {
+    navigate('/create-post', { state: { item } });
+  }
+
+  return { gotoHome, gotoCreatePost, gotoManagePosts, handlePostView, handleEditPost }
 }
