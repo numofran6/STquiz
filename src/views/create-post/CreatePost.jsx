@@ -197,7 +197,7 @@ export const CreatePost = () => {
 							/>
 
 							<button type="submit" className="blue-btn-inverse w-fit">
-								Create Post
+								Save Post
 							</button>
 						</form>
 					</div>
