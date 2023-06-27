@@ -1,5 +1,12 @@
 import React from 'react';
-import { AddPost, Footer, Home, ManagePosts, NavBar, ViewPost } from './views';
+import {
+	CreatePost,
+	Footer,
+	Home,
+	ManagePosts,
+	NavBar,
+	ViewPost,
+} from './views';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -9,7 +16,7 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="create-post" element={<AddPost />} />
+				<Route path="create-post" element={<CreatePost />} />
 				<Route path="manage-posts" element={<ManagePosts />} />
 				<Route path="view-post" element={<ViewPost />} />
 			</Routes>

@@ -23,6 +23,7 @@ export const PostCard = ({
 				<img
 					src={image}
 					ref={imageRef}
+					loading="lazy"
 					alt=""
 					className={`postcard-img ${
 						isHovered ? 'shadow-2xl' : ''

@@ -37,6 +37,7 @@ export const AdvancedPostCard = ({
 					<img
 						src={image}
 						ref={imageRef}
+						loading="lazy"
 						onClick={onClick}
 						alt=""
 						className={`postcard-img ${

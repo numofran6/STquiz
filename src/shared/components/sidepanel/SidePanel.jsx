@@ -19,8 +19,9 @@ export const SidePanel = ({
 			<img
 				src={image}
 				ref={imageRef}
+				loading="lazy"
 				alt=""
-				className={`w-[8.5rem] h-[7.5rem] md:w-[11.5rem] md:h-[9.5rem] object-cover rounded-[2rem] bg-[#f7f8fb] ${
+				className={`w-[8.5rem] h-[7.5rem] md:w-[11.5rem] md:h-[9.5rem] object-cover rounded-[2rem] bg-[#f2f4f5c5] ${
 					isHovered ? 'shadow-2xl' : ''
 				} hover-transition`}
 			/>

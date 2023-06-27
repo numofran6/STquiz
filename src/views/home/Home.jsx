@@ -69,6 +69,7 @@ export const Home = () => {
 
 						<img
 							src={layer}
+							loading="lazy"
 							alt=""
 							className="promoted-image align-float-vertical"
 						/>

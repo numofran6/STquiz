@@ -5,19 +5,30 @@ import { useContext } from 'react';
 import { PostContext } from '../../shared/context/PostContext';
 import { useInAppNavigation } from '../../shared/custom-hooks';
 import { useLocation } from 'react-router-dom';
-import './AddPost.css';
+import './CreatePost.css';
 
-export const AddPost = () => {
+export const CreatePost = () => {
 	const inputFileRef = useRef(null);
 	const imageRef = useRef(null);
+	const dateInputRef = useRef(null);
+
 	const { dispatch } = useContext(PostContext);
+
 	const location = useLocation();
 	const post = location.state?.item;
+	const prevRoute = location.state?.path;
+
 	const [title, setTitle] = useState(post?.title || '');
 	const [author, setAuthor] = useState(post?.author || '');
 	const [date, setDate] = useState(post?.date || '');
 	const [body, setBody] = useState(post?.body || '');
+	const [selectedImage, setSelectedImage] = useState(null);
+	const [formError, setFormError] = useState({ date: false });
+
 	const { gotoManagePosts } = useInAppNavigation();
+
+	const dateRegex =
+		/^(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2},\s\d{4}$/;
 
 	const handleImageClick = () => {
 		inputFileRef.current.click();
@@ -40,13 +51,26 @@ export const AddPost = () => {
 		}
 	};
 
+	const validateForm = () => {
+		if (dateRegex.test(date)) {
+			return true;
+		} else {
+			setFormError({ date: true });
+			dateInputRef.current.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+			});
+			return false;
+		}
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		const imageData = localStorage.getItem('imageData');
 		const imageDataURL = `data:image/png;base64,${imageData}`;
 
-		if ((title, author, date, body, imageData)) {
+		if (validateForm() && title && author && date && body && imageData) {
 			dispatch({
 				type: 'ADD_POST',
 				payload: { title, author, date, body, img: imageDataURL },
@@ -77,13 +101,25 @@ export const AddPost = () => {
 								className="add-post-input"
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
+								helperText={
+									prevRoute === '/manage-posts' &&
+									'To edit a post, the title must remain the same.'
+								}
+								disabled={prevRoute === '/manage-posts'}
 							/>
 							<TextField
 								required
-								label="Date (May 9, 2023)"
+								ref={dateInputRef}
+								label="Date (Ex: May 9, 2023)"
 								className="add-post-input"
 								value={date}
 								onChange={(e) => setDate(e.target.value)}
+								error={formError.date && !dateRegex.test(date)}
+								helperText={
+									formError.date &&
+									!dateRegex.test(date) &&
+									'Please use the correct Date format.'
+								}
 							/>
 							<TextField
 								required

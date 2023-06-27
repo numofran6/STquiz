@@ -15,7 +15,7 @@ export const Header = () => {
 				</div>
 
 				<div>
-					<Link to={'/create-post'} className="blue-btn w-fit">
+					<Link to={'/create-post'} className="blue-btn w-fit shadow-sm">
 						Add Post
 						<span>
 							<BsArrowRight className="ml-2" />{' '}
