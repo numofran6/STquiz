@@ -5,6 +5,7 @@ import {
 	Home,
 	ManagePosts,
 	NavBar,
+	PageNotFound,
 	ViewPost,
 } from './views';
 import { Route, Routes } from 'react-router-dom';
@@ -19,6 +20,8 @@ function App() {
 				<Route path="create-post" element={<CreatePost />} />
 				<Route path="manage-posts" element={<ManagePosts />} />
 				<Route path="view-post" element={<ViewPost />} />
+
+				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 
 			<Footer />
