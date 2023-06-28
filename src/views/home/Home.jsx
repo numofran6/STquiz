@@ -77,6 +77,7 @@ export const Home = () => {
 
 						<img
 							src={layer}
+							onClick={() => handlePostView(promotedItem)}
 							loading="lazy"
 							alt=""
 							className="promoted-image align-float-vertical"
