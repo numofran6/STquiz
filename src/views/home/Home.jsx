@@ -68,7 +68,7 @@ export const Home = () => {
 
 								<button
 									onClick={() => handlePostView(promotedItem)}
-									className="orange-btn w-fit"
+									className="orange-btn w-fit z-50"
 								>
 									Read More
 								</button>
