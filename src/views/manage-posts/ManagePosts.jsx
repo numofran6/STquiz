@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AdvancedPostCard } from '../../shared/components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { PostContext } from '../../shared/context/PostContext';
 import { useInAppNavigation } from '../../shared/custom-hooks';
 import './ManagePosts.css';
@@ -10,6 +10,11 @@ export const ManagePosts = () => {
 		states: { posts },
 	} = useContext(PostContext);
 	const { handlePostView } = useInAppNavigation();
+	const location = useLocation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location]);
 
 	if (posts.length < 1) {
 		return (

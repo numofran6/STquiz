@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export const ViewPost = () => {
 	const location = useLocation();
 	const post = location.state.item;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location]);
 
 	return (
 		<main id="viewpost" className="landing-background pt-16 pb-40">

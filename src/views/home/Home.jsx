@@ -9,9 +9,17 @@ import { MdEmail } from 'react-icons/md';
 import { recipes, recentItems, promotedItem } from '../../shared/utils/data';
 import { useInAppNavigation } from '../../shared/custom-hooks';
 import './Home.css';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const Home = () => {
 	const { handlePostView } = useInAppNavigation();
+	const location = useLocation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location]);
+
 	return (
 		<>
 			<header>

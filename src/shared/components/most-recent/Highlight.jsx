@@ -16,7 +16,7 @@ export const Highlight = ({ img, title, description, onClick = () => {} }) => {
 				ref={imageRef}
 				alt=""
 				loading="lazy"
-				className={`w-full h-[20rem] md:h-[30rem] object-cover rounded-[3rem] bg-[#f2f4f5c5] hover-transition ${
+				className={`w-full h-[20rem] md:h-[30rem] object-cover rounded-[3rem] bg-[#EFEFEF] hover-transition ${
 					isHovered ? 'shadow-2xl' : ''
 				}`}
 			/>
