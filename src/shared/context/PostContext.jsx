@@ -30,6 +30,8 @@ const reducer = (state, action) => {
 				(item) => item.title !== postToRemove.title
 			);
 			localStorage.setItem('post', JSON.stringify([...allPosts]));
+			localStorage.removeItem(`imageData_${postToRemove.title}`);
+
 			return { ...state, posts: [...allPosts] };
 		}
 	}
